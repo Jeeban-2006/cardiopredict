@@ -1,0 +1,8 @@
+{
+  "name": "cardiopredict",
+  "version": "1.0.0",
+  "description": "Production-ready CardioPredict application",
+  "scripts": {
+    "build": "npm --prefix frontend run build"
+  }
+}
