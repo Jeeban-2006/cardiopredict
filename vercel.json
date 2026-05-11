@@ -1,5 +1,9 @@
 {
-  "buildCommand": "npm --prefix frontend run build",
+  "buildCommand": "npm run build",
   "outputDirectory": "backend/static",
-  "framework": "vite"
+  "installCommand": "npm --prefix frontend install",
+  "framework": "vite",
+  "env": {
+    "NPM_BUILD_PRODUCTION": "true"
+  }
 }
