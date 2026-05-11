@@ -1,0 +1,42 @@
+
+HEART DISEASE DETECTION - MODEL EVALUATION SUMMARY
+============================================================
+
+DATASET INFORMATION:
+- Total samples: 303
+- Training samples: 242 (80%)
+- Test samples: 61 (20%)
+- Features: 13 clinical indicators
+- Target: Binary (Disease/No Disease)
+
+MODELS EVALUATED:
+1. Logistic Regression
+2. Random Forest
+3. K-Nearest Neighbors (KNN)
+4. XGBoost
+5. Support Vector Machine (SVM)
+
+TOP PERFORMERS:
+- Best Overall Model (Accuracy): Random Forest (0.8852)
+- Best ROC-AUC Model: Logistic Regression (0.9513)
+
+KEY FINDINGS:
+- Random Forest and KNN achieved the highest accuracy (0.8852)
+- Logistic Regression achieved the highest ROC-AUC (0.9513)
+- Random Forest shows best balance of Precision and Recall
+- All models show strong performance with >85% accuracy
+
+RECOMMENDATIONS:
+1. For production deployment: Use Random Forest or KNN for best accuracy
+2. For confidence scores: Use Logistic Regression with highest ROC-AUC
+3. For interpretability: Logistic Regression is most interpretable
+4. Ensemble approach: Combine predictions from top 3 models for robustness
+
+MODEL PERFORMANCE TABLE:
+                        Accuracy  Precision  Recall  F1-Score  ROC-AUC
+Logistic Regression       0.8689     0.8125  0.9286    0.8667   0.9513
+Random Forest             0.8852     0.8182  0.9643    0.8852   0.9513
+KNN                       0.8852     0.8000  1.0000    0.8889   0.9232
+XGBoost                   0.8525     0.7879  0.9286    0.8525   0.9188
+Support Vector Machine    0.8525     0.8065  0.8929    0.8475   0.9437
+    
