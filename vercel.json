@@ -1,12 +1,7 @@
 {
-  "projects": {
-    "frontend": {
-      "root": "frontend",
-      "buildCommand": "npm run build",
-      "outputDirectory": "dist",
-      "framework": "vite"
-    }
-  },
+ "buildCommand": "npm run build",
+  "outputDirectory": "frontend/dist",
+  "framework": "vite",
   "env": {
     "NPM_BUILD_PRODUCTION": "true"
   }
