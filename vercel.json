@@ -1,8 +1,12 @@
 {
-  "buildCommand": "cd frontend && npm run build",
-  "outputDirectory": "frontend/dist",
-  "installCommand": "cd frontend && npm install",
-  "framework": "vite",
+  "projects": {
+    "frontend": {
+      "root": "frontend",
+      "buildCommand": "npm run build",
+      "outputDirectory": "dist",
+      "framework": "vite"
+    }
+  },
   "env": {
     "NPM_BUILD_PRODUCTION": "true"
   }
