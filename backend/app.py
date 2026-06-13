@@ -9,6 +9,15 @@ warnings.filterwarnings('ignore')
 
 app = Flask(__name__, static_folder='./static', static_url_path='/')
 
+#Configure CORS using ALLOWED_ORIGINS environment variable
+allowed_origins_env = os.environ.get('ALLOWED_ORIGINS')
+if allowed_origins_env:
+    allowed_origins = [origin.strip() for origin in allowed_origins_env.split(',') if origin.strip()]
+else:
+    allowed_origins = ['http://localhost:5173', 'http://127.0.0.1:5173']
+
+CORS(app, resources={r"/api/*": {"origins": allowed_origins}})
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODELS_DIR = os.path.join(BASE_DIR, 'models')
 DATA_DIR = os.path.join(BASE_DIR, 'data')
