@@ -165,4 +165,4 @@ if __name__ == '__main__':
         print("Models loaded successfully!")
     except Exception as e:
         print(f"Warning: Could not pre-load models: {e}")
-    app.run(debug=True, port=5000)
+    app.run(host="0.0.0.0",port=int(os.environ.get("PORT", 10000)))
