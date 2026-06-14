@@ -10,7 +10,11 @@ export default function PerformanceDashboard() {
   useEffect(() => {
     const fetchPerformance = async () => {
       try {
-        const response = await axios.get(`${API_URL}/api/models/performance`);
+        const response = await axios.get(
+          `${API_URL}/api/models/performance`
+        );
+
+        setPerformance(response.data);   // <-- MISSING
       } catch (err) {
         console.error('Failed to fetch performance data', err);
       } finally {
@@ -22,6 +26,13 @@ export default function PerformanceDashboard() {
 
   if (loading) {
     return <div className="card text-center py-12 text-slate-400">Loading performance data...</div>;
+  }
+  if (!performance) {
+    return (
+      <div className="card text-center py-12 text-red-400">
+        Failed to load performance data
+      </div>
+    );
   }
 
   const metrics = ['accuracy', 'precision', 'recall', 'f1', 'roc_auc'];
