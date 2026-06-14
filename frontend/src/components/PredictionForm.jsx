@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import axios from 'axios';
+import api from '../api';
 import ResultCard from './ResultCard';
 import FeatureInput from './FeatureInput';
 import { Send, AlertCircle } from 'lucide-react';
@@ -43,7 +43,7 @@ export default function PredictionForm({ result, setResult, loading, setLoading 
     setError('');
     try {
       const numericFeatures = features.map(f => parseFloat(f));
-      const response = await axios.post('/api/predict', {
+      const response = await api.post('/api/predict', {
         features: numericFeatures,
         model: selectedModel
       });

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import axios from 'axios';
+import api from '../api';
 import { Zap, AlertCircle } from 'lucide-react';
 import FeatureInput from './FeatureInput';
 import EnsembleResult from './EnsembleResult';
@@ -40,7 +40,7 @@ export default function EnsembleView({ result, setResult, loading, setLoading })
     setError('');
     try {
       const numericFeatures = features.map(f => parseFloat(f));
-      const response = await axios.post('/api/predict/ensemble', {
+      const response = await api.post('/api/predict/ensemble', {
         features: numericFeatures
       });
       setResult(response.data);

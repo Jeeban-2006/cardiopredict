@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from '../api';
 import { BarChart3, TrendingUp } from 'lucide-react';
-const API_URL = import.meta.env.VITE_API_URL;
 
 export default function PerformanceDashboard() {
   const [performance, setPerformance] = useState(null);
@@ -10,11 +9,8 @@ export default function PerformanceDashboard() {
   useEffect(() => {
     const fetchPerformance = async () => {
       try {
-        const response = await axios.get(
-          `${API_URL}/api/models/performance`
-        );
-
-        setPerformance(response.data);   // <-- MISSING
+        const response = await api.get('/api/models/performance');
+        setPerformance(response.data);
       } catch (err) {
         console.error('Failed to fetch performance data', err);
       } finally {
