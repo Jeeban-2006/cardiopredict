@@ -9,8 +9,10 @@ import { BarChart3, Zap, Home } from 'lucide-react';
 function App() {
   const [currentPage, setCurrentPage] = useState('landing');
   const [activeTab, setActiveTab] = useState('predict');
-  const [result, setResult] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [singleResult, setSingleResult] = useState(null);
+  const [ensembleResult, setEnsembleResult] = useState(null);
+  const [singleLoading, setSingleLoading] = useState(false);
+  const [ensembleLoading, setEnsembleLoading] = useState(false);
 
   if (currentPage === 'landing') {
     return <LandingPage onNavigate={() => setCurrentPage('dashboard')} />;
@@ -83,10 +85,10 @@ function App() {
         {/* Content */}
         <div className="mb-12">
           {activeTab === 'predict' && (
-            <PredictionForm result={result} setResult={setResult} loading={loading} setLoading={setLoading} />
+            <PredictionForm result={singleResult} setResult={setSingleResult} loading={singleLoading} setLoading={setSingleLoading} />
           )}
           {activeTab === 'ensemble' && (
-            <EnsembleView result={result} setResult={setResult} loading={loading} setLoading={setLoading} />
+            <EnsembleView result={ensembleResult} setResult={setEnsembleResult} loading={ensembleLoading} setLoading={setEnsembleLoading} />
           )}
           {activeTab === 'dashboard' && <PerformanceDashboard />}
         </div>
