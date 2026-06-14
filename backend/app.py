@@ -8,7 +8,7 @@ import json
 
 warnings.filterwarnings('ignore')
 
-app = Flask(__name__, static_folder='./static', static_url_path='/')
+app = Flask(__name__)
 
 #Configure CORS using ALLOWED_ORIGINS environment variable
 allowed_origins_env = os.environ.get('ALLOWED_ORIGINS')
@@ -62,12 +62,10 @@ def load_models():
     return models_cache
 
 @app.route('/')
-def index():
-    static_folder = app.static_folder
-    index_path = os.path.join(static_folder, 'index.html')
-    if os.path.exists(index_path):
-        return send_from_directory(static_folder, 'index.html')
-    return "Frontend not built. Run 'npm run build' in the frontend folder."
+def home():
+    return jsonify({
+        "status": "API Running"
+    })
 
 @app.route('/api/predict', methods=['POST'])
 def predict():
@@ -152,9 +150,9 @@ def predict_ensemble():
 def model_performance():
     return jsonify(MODEL_PERFORMANCE)
 
-@app.errorhandler(404)
-def not_found(e):
-    return send_from_directory(app.static_folder, 'index.html')
+# @app.errorhandler(404)
+# def not_found(e):
+#     return send_from_directory(app.static_folder, 'index.html')
 
 if __name__ == '__main__':
     print("Starting Heart Disease Prediction API...")
